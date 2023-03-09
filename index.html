@@ -38,6 +38,7 @@
 </head>
 
 <body class="body">
+
     <div class="hero">
         <div data-collapse="medium" data-animation="default" data-duration="400" data-doc-height="1" class="nav w-nav">
             <div class="nav-inner">
@@ -48,8 +49,10 @@
                 </div>
                 <div class="nav-menu-wrap">
                     <nav role="navigation" class="nav-menu-2 w-nav-menu">
-                        <a href="#about" class="nav-link w-nav-link">About</a>
+                        <a href="#info" class="nav-link w-nav-link">Info</a>
                         <a href="#projects" class="nav-link w-nav-link">Projects</a>
+                        <a href="#extra" class="nav-link w-nav-link">Extra</a>
+                        <a href="settings.html" class="nav-link w-nav-link">Settings</a>
                     </nav>
                     <div class="menu-button w-nav-button">
                         <div class="menu-icon w-icon-nav-menu"></div>
@@ -59,7 +62,7 @@
             <div class="w-nav-overlay" data-wf-ignore=""></div>
         </div>
     </div>
-    <div class="section center">
+    <div id="main" class="section center">
         <img src="assets/images/arrow.svg" alt=""
             class="arrow" />
         <div data-w-id="6b220cb1-4b9c-7fb0-75b9-53ff4a6c35a2" style="
@@ -73,12 +76,12 @@
             <h3 class="hero-subhead">
                 Oh — just here to check? Nevermind.
             </h3>
-            <a href="#projects" class="button w-button">My Projects</a>
+            <a href="#projects" class="button w-button" t="Go to projects">My Projects</a>
         </div>
         <img src="assets/images/messages.png"
         alt="" class="hero-image" />
     </div>
-    <div id="about" class="section wide img">
+    <div id="info" class="section wide img">
         <div data-w-id="b126983d-9126-fc06-c81d-1318685e2add" style="
           transform: translate3d(0px, 40px, 0px) scale3d(1, 1, 1) rotateX(0deg)
             rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
@@ -86,7 +89,7 @@
           transform-style: preserve-3d;
         " class="wrap">
             <div class="title">Info</div>
-            <h2>Hi, I'm slyrp. I am a soon-to-be actual developer but for now I rely on the ChatGPT extension in VSCode.</h2>
+            <h1 class="h2-do-not-change">Hi, I'm slyrp. I am a soon-to-be actual developer but for now I rely on the ChatGPT extension in VSCode.</h1>
         </div>
         <div class="wrapper">
             <img src="assets/images/vscode.png" alt="" />
@@ -105,7 +108,7 @@
                 <p>
                     PBC Viewer is a simple way to read and generate images for .pbc files.
                 </p>
-                <a href="https://github.com/slyrp/ACNH/" class="button w-button">Go to project</a>
+                <a href="https://github.com/slyrp/ACNH/" class="button w-button" t="Go to Github">Go to project</a>
             </div>
             <div class="feature-image">
                 <img src="assets/images/pbc.png"
@@ -124,7 +127,7 @@
                 <p>
                     Resortopia Modding Info provides information to help people mod Resortopia.
                 </p>
-                <a href="https://github.com/slyrp/ResortopiaInfo" class="button w-button">Go to project</a>
+                <a href="https://github.com/slyrp/ResortopiaInfo" class="button w-button" t="Go to Github">Go to project</a>
             </div>
             <div class="feature-image">
                 <img src="assets/images/resortopia.png" alt="" width="386" class="image-2" />
@@ -142,14 +145,14 @@
                 <p>
                     I stole a Webflow template to make this website.
                 </p>
-                <a href="https://webflow.com/templates/html/momentum-marketing-website-template" class="button w-button">Go to website</a>
+                <a href="https://webflow.com/templates/html/momentum-marketing-website-template" class="button w-button" t="Go to Webflow">Go to website</a>
             </div>
             <div class="feature-image">
                 <img src="assets/images/momentum.png"
                     width="500" alt="" class="image-2" />
             </div>
         </div>
-        <div class="feature-wrap icons">
+        <div id="extra" class="feature-wrap icons">
             <div class="feature-content icons">
                 <img src="assets/images/python.png" alt="" class="feature-icon" />
                 <h4 class="black-text">Python</h4>

@@ -262,6 +262,9 @@ function deviceCheckCursor() {
         if (document.querySelector('.change-mobile-config')) {
             document.querySelector('.change-mobile-config').innerHTML = 'Hold to save';
         }
+        if (document.querySelector('.remove-mobile')) {
+            document.querySelectorAll('.remove-mobile').forEach(e => e.remove());
+        }
     }
 }
 deviceCheckCursor();

@@ -1323,7 +1323,7 @@ class ColorPicker {
             });
         });
 
-        this.root.querySelectorAll(".saved-color").forEach((el, i) => {
+        document.querySelectorAll(".saved-color").forEach((el, i) => {
             this.showSavedColor(el, this.savedColors[i]);
             el.addEventListener("mouseup", (e) => {
                 if (e.button == 2) {
@@ -1341,8 +1341,8 @@ class ColorPicker {
 
     setSelectedColor(color, skipCjUpdate = false) {
         this.selectedColor = color;
-        this.root.querySelector(".selected-color-text").textContent = color;
-        this.root.querySelector(".selected-color").style.background = color;
+        document.querySelector(".selected-color-text").textContent = color;
+        document.querySelector(".selected-color").style.background = color;
 
         if (!skipCjUpdate) {
             this.colorjoe.set(color);

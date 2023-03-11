@@ -208,14 +208,14 @@
 
 /* main dimensions */
 .colorPicker .twod, .colorPicker .twod .bg {
-  width: 240px;
+  width: 300px;
   height: 240px;
 }
 .colorPicker .oned, .colorPicker .oned .bg {
   height: 240px;
 }
 .colorPicker .oned, .colorPicker .oned .bg, .colorPicker .oned .pointer .shape {
-  width: 20px;
+  width: 25px;
 }
 
 .colorPicker .twod .bg {

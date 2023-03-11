@@ -75,6 +75,12 @@
   display: none;
 }
 
+#canvas{
+  width: 200px;
+  height: 200px;
+  border: solid 1px #000000;
+}
+
 .colorPicker {
   background: none;
   border: none;
@@ -88,9 +94,11 @@
 .container {
   display: flex;
   width: 500px;
-  padding: 10px;
+  margin: 0;
   background: #1b1b1b;
   border-radius: 5px;
+  align-items: center;
+  right: 100px;
 }
 
 .config {
@@ -159,7 +167,7 @@
 
 .colorPicker .extras .currentColor {
   float: right;
-  width: 2px;
+  width: 65px;
   height: 30px;
   border: 1px solid #1b1b1b;
   -moz-border-radius: .3em;
@@ -180,7 +188,7 @@
 }
 
 .colorPicker .extras .colorFields input {
-  width: 2px;
+  width: 40px;
   margin-left: 0.5em;
 
 }
@@ -190,7 +198,7 @@
 }
 
 .colorPicker .extras .hex input {
-  width: 2px;
+  width: 60px;
 }
 
 .colorPicker .twod {

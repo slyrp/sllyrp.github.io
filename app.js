@@ -11,6 +11,7 @@ const js = document.querySelector('#javascript-icon');
 const otherLanguages = document.querySelector('#other-languages');
 const navMenu = document.querySelector(".nav-menu-2")
 const navLinks = document.querySelectorAll(".w-nav-link");
+const navIcon = document.querySelector("w-icon-nav-menu");
 let isDown = false;
 let startY;
 let scrollDown;
@@ -19,9 +20,11 @@ if (!localStorage.getItem('selected-color')) {
     localStorage.setItem('selected-color', '#fc0a7e');
 }
 
-document.styleSheets[0].deleteRule(0);
-document.styleSheets[0].insertRule('.nav-link:hover { box-shadow: inset 0 -5px 0 0 ' + localStorage.getItem('selected-color') + ' !important; }', 0);
+document.styleSheets[0].insertRule('.nav-link:hover { box-shadow: inset 0 -5px 0 0 ' + localStorage.getItem('selected-color') + ' !important; }', document.styleSheets[0].cssRules.length);
+document.styleSheets[0].insertRule('::selection { background-color: ' + localStorage.getItem('selected-color') + ' !important; }', 0);
+document.styleSheets[0].insertRule('.footer-link:hover { color: ' + localStorage.getItem('selected-color') + ' !important; }', 0);
 
+setInterval(checkNavMenu, 100)
 function checkNavMenu() {
     const screenWidth = window.innerWidth;
     if (screenWidth >= 991) { // change this value as needed
@@ -30,16 +33,6 @@ function checkNavMenu() {
         navMenu.style.backgroundColor = localStorage.getItem("selected-color");
     }
 }
-
-// call the function initially
-document.addEventListener('DOMContentLoaded', function() {
-    checkNavMenu();
-});
-
-// add an event listener for the resize event
-window.addEventListener('resize', function () {
-    checkNavMenu();
-});
 
 document.querySelectorAll(".button").forEach((button) => {
     button.style.backgroundColor = localStorage.getItem('selected-color');
@@ -177,6 +170,12 @@ function deviceCheckCursor() {
         const circleh = document.createElement('div')
         const circlei = document.createElement('div')
         const circlej = document.createElement('div')
+        const circlek = document.createElement('div')
+        const circlel = document.createElement('div')
+        const circlem = document.createElement('div')
+        const circlen = document.createElement('div')
+        const circleo = document.createElement('div')
+        const circlep = document.createElement('div')
 
         circle.classList.add('circle')
         circle1.classList.add('circle')
@@ -198,6 +197,12 @@ function deviceCheckCursor() {
         circleh.classList.add('circle')
         circlei.classList.add('circle')
         circlej.classList.add('circle')
+        circlek.classList.add('circle')
+        circlel.classList.add('circle')
+        circlem.classList.add('circle')
+        circlen.classList.add('circle')
+        circleo.classList.add('circle')
+        circlep.classList.add('circle')
 
         document.body.appendChild(circle)
         document.body.appendChild(circle1)
@@ -219,7 +224,12 @@ function deviceCheckCursor() {
         document.body.appendChild(circleh)
         document.body.appendChild(circlei)
         document.body.appendChild(circlej)
-
+        document.body.appendChild(circlek)
+        document.body.appendChild(circlel)
+        document.body.appendChild(circlem)
+        document.body.appendChild(circlen)
+        document.body.appendChild(circleo)
+        document.body.appendChild(circlep)
 
     }
     if (check == true) {

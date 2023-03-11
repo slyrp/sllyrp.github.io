@@ -1304,7 +1304,10 @@ class ColorPicker {
         setInterval(changeNavLinks, 100)
         function changeNavLinks() {
             document.styleSheets[0].deleteRule(0);
-            document.styleSheets[0].insertRule('.nav-link:hover { box-shadow: inset 0 -5px 0 0 ' + localStorage.getItem('selected-color') + ' !important; }', 0);
+            document.styleSheets[0].deleteRule(1);
+            document.styleSheets[0].insertRule('.nav-link:hover { box-shadow: inset 0 -5px 0 0 ' + localStorage.getItem('selected-color') + ' !important; }', document.styleSheets[0].cssRules.length);
+            document.styleSheets[0].insertRule('::selection { background-color: ' + localStorage.getItem('selected-color') + ' !important; }', 0);
+            document.styleSheets[0].insertRule('.footer-link:hover { color: ' + localStorage.getItem('selected-color') + ' !important; }', 0); 
         }
 
         this.colorjoe.on("change", (color) => {

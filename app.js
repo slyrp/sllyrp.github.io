@@ -1,9 +1,72 @@
 const h2Text = document.querySelectorAll('h2');
 const h4Text = document.querySelectorAll('h4');
 const slider = document.querySelector("body");
+const center = document.querySelector('.center');
+const python = document.querySelector('#python-icon');
+const button = document.querySelectorAll('.button');
+const linearGradient = document.querySelectorAll('linearGradient');
+const js = document.querySelector('#javascript-icon');
+const otherLanguages = document.querySelector('#other-languages');
+const navMenu = document.querySelector(".nav-menu-2")
+const navLinks = document.querySelectorAll(".w-nav-link");
 let isDown = false;
 let startY;
 let scrollDown;
+
+document.styleSheets[0].deleteRule(0);
+document.styleSheets[0].insertRule('.nav-link:hover { box-shadow: inset 0 -5px 0 0 ' + localStorage.getItem('selected-color') + ' !important; }', 0);
+
+function checkNavMenu() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth >= 991) { // change this value as needed
+        navMenu.style.backgroundColor = 'transparent';
+    } else {
+        navMenu.style.backgroundColor = localStorage.getItem("selected-color");
+    }
+}
+
+// call the function initially
+document.addEventListener('DOMContentLoaded', function() {
+    checkNavMenu();
+});
+
+// add an event listener for the resize event
+window.addEventListener('resize', function () {
+    checkNavMenu();
+});
+
+document.querySelectorAll(".button").forEach((button) => {
+    button.style.backgroundColor = localStorage.getItem('selected-color');
+});
+
+navMenu.style.backgroundColor = localStorage.getItem("selected-color");
+
+function darkenColor(hex) {
+    const r = parseInt(hex.substring(1, 3), 16);
+    const g = parseInt(hex.substring(3, 5), 16);
+    const b = parseInt(hex.substring(5, 7), 16);
+    const hexToRgbaColor = `rgba(${r}, ${g}, ${b}, 1)`;
+
+    console.log(hexToRgbaColor);
+
+    const darkenedHexToRgbaColor = `rgba(${Math.floor(r * 0.5)}, ${Math.floor(g * 0.5)}, ${Math.floor(b * 0.5)}, 1)`;
+
+    console.log("darker: ", darkenedHexToRgbaColor);
+
+    if (document.querySelector('.center')) {
+        center.style.backgroundImage = `linear-gradient(${hexToRgbaColor}, ${darkenedHexToRgbaColor})`;
+    }
+    if (document.querySelector('#python-icon')) {
+        linearGradient.forEach(gradient => {
+            const stop = gradient.querySelector('stop:last-child');
+            stop.setAttribute('stop-color', localStorage.getItem('selected-color'))
+        });
+
+        js.style.fill = localStorage.getItem('selected-color');
+        otherLanguages.style.fill = localStorage.getItem('selected-color');
+    }
+}
+darkenColor(localStorage.getItem('selected-color'))
 
 // Checks if theme is dark or light
 function checkTheme() {
@@ -52,18 +115,18 @@ function checkScroll() {
             startY = e.pageY - slider.offsetTop;
             scrollDown = slider.scrollTop;
         });
-          
-          slider.addEventListener("mouseleave", () => {
+
+        slider.addEventListener("mouseleave", () => {
             isDown = false;
             slider.classList.remove("active");
         });
-          
-          slider.addEventListener("mouseup", () => {
+
+        slider.addEventListener("mouseup", () => {
             isDown = false;
             slider.classList.remove("active");
         });
-          
-          slider.addEventListener("mousemove", e => {
+
+        slider.addEventListener("mousemove", e => {
             if (!isDown) return;
             e.preventDefault();
             const y = e.pageY - slider.offsetTop;
@@ -73,6 +136,14 @@ function checkScroll() {
     }
 }
 checkScroll();
+
+function checkColor() {
+    if (localStorage.getItem('color')) {
+        document.body.style.setProperty('--main-color', localStorage.getItem('color'));
+    } else {
+        document.body.style.setProperty('--main-color', '#fc0a7e');
+    }
+}
 
 // checks if device is mobile and toggles cursor if not
 function deviceCheckCursor() {
@@ -147,6 +218,7 @@ function deviceCheckCursor() {
     }
     if (check == true) {
         document.querySelectorAll('.circle').forEach(e => e.remove());
+        document.querySelector
     }
 }
 deviceCheckCursor();
@@ -155,15 +227,10 @@ deviceCheckCursor();
 const coords = { x: 0, y: 0 };
 const circles = document.querySelectorAll(".circle");
 
-const colors = [
-    "#dd1173",
-
-];
-
-circles.forEach(function (circle, index) {
+circles.forEach((circle) => { // use arrow function here
     circle.x = 0;
     circle.y = 0;
-    circle.style.backgroundColor = colors[index % colors.length];
+    circle.style.backgroundColor = localStorage.getItem('selected-color');
 });
 
 window.addEventListener("mousemove", function (e) {

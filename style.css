@@ -22,6 +22,7 @@
   font-size: 14px;
   opacity: 0; /* Make it invisible by default */
   transition: opacity 0.7s;
+  pointer-events: auto; /* disable hover on ::after */
 }
 
 /* Show tooltip when hovered over */
@@ -34,7 +35,7 @@
   width: 24px;
   border-radius: 24px;
   background-color: black;
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
@@ -75,7 +76,7 @@
   display: none;
 }
 
-#canvas{
+#canvas {
   width: 200px;
   height: 200px;
   border: solid 1px #000000;
@@ -93,7 +94,7 @@
 
 .container {
   display: flex;
-  width: 500px;
+  width: 340px;
   margin: 0;
   background: #1b1b1b;
   border-radius: 5px;
@@ -133,7 +134,8 @@
   margin-bottom: 5px;
 }
 
-#rgbValue, #hslaValue {
+#rgbValue,
+#hslaValue {
   float: right;
 }
 
@@ -147,14 +149,12 @@
 
 .colorPicker {
   background: #1b1b1b;
-  border: 0px solid #BBB;
-  -moz-border-radius: .3em;
-  border-radius: .3em;
+  border: 0px solid #bbb;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
   margin: 1em;
   display: inline-block;
 }
-
-
 
 .colorPicker .extras {
   float: right;
@@ -170,8 +170,8 @@
   width: 65px;
   height: 30px;
   border: 1px solid #1b1b1b;
-  -moz-border-radius: .3em;
-  border-radius: .3em;
+  -moz-border-radius: 0.3em;
+  border-radius: 0.3em;
 }
 
 .colorPicker .extras .colorFields {
@@ -190,7 +190,6 @@
 .colorPicker .extras .colorFields input {
   width: 40px;
   margin-left: 0.5em;
-
 }
 
 .colorPicker .extras .hex {
@@ -207,14 +206,18 @@
 }
 
 /* main dimensions */
-.colorPicker .twod, .colorPicker .twod .bg {
-  width: 300px;
+.colorPicker .twod,
+.colorPicker .twod .bg {
+  width: 240px;
   height: 240px;
 }
-.colorPicker .oned, .colorPicker .oned .bg {
+.colorPicker .oned,
+.colorPicker .oned .bg {
   height: 240px;
 }
-.colorPicker .oned, .colorPicker .oned .bg, .colorPicker .oned .pointer .shape {
+.colorPicker .oned,
+.colorPicker .oned .bg,
+.colorPicker .oned .pointer .shape {
   width: 25px;
 }
 
@@ -283,53 +286,240 @@
 }
 /* gradients, tweak as needed based on which browsers you want to support */
 .colorPicker .oned .bg {
-  background: -moz-linear-gradient(top,  #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 66%, #ff00ff 83%, #ff0000 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff0000), color-stop(17%,#ffff00), color-stop(33%,#00ff00), color-stop(50%,#00ffff), color-stop(66%,#0000ff), color-stop(83%,#ff00ff), color-stop(100%,#ff0000));
-  background: -webkit-linear-gradient(top,  #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
-  background: -o-linear-gradient(top,  #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
-  background: linear-gradient(to bottom,  #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
+  background: -moz-linear-gradient(
+    top,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 66%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #ff0000),
+    color-stop(17%, #ffff00),
+    color-stop(33%, #00ff00),
+    color-stop(50%, #00ffff),
+    color-stop(66%, #0000ff),
+    color-stop(83%, #ff00ff),
+    color-stop(100%, #ff0000)
+  );
+  background: -webkit-linear-gradient(
+    top,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 66%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 66%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 66%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
 }
 
 .colorPicker .twod .bg1 {
   z-index: 0;
-  background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0)));
-  background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
-  background: -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
-  background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+  background: -moz-linear-gradient(
+    left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0%, rgba(255, 255, 255, 1)),
+    color-stop(100%, rgba(255, 255, 255, 0))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 .colorPicker .twod .bg2 {
   z-index: 1;
-  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1)));
-  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
-  background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
-  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(0, 0, 0, 0)),
+    color-stop(100%, rgba(0, 0, 0, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 
 #hslPicker .twod .bg1 {
-  background: -moz-linear-gradient(left,  #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 66%, #ff00ff 83%, #ff0000 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ff0000), color-stop(17%,#ffff00), color-stop(33%,#00ff00), color-stop(50%,#00ffff), color-stop(66%,#0000ff), color-stop(83%,#ff00ff), color-stop(100%,#ff0000));
-  background: -webkit-linear-gradient(left, #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
-  background: -o-linear-gradient(left, #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
-  background: linear-gradient(to right, #ff0000 0%,#ffff00 17%,#00ff00 33%,#00ffff 50%,#0000ff 66%,#ff00ff 83%,#ff0000 100%);
+  background: -moz-linear-gradient(
+    left,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 66%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0%, #ff0000),
+    color-stop(17%, #ffff00),
+    color-stop(33%, #00ff00),
+    color-stop(50%, #00ffff),
+    color-stop(66%, #0000ff),
+    color-stop(83%, #ff00ff),
+    color-stop(100%, #ff0000)
+  );
+  background: -webkit-linear-gradient(
+    left,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 66%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 66%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+  background: linear-gradient(
+    to right,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 66%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
 }
 
 #hslPicker .twod .bg2 {
-  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(127,127,127,1) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(127,127,127,1)));
-  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(127,127,127,1) 100%);
-  background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(127,127,127,1) 100%);
-  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(127,127,127,1) 100%);
+  background: -moz-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(127, 127, 127, 1) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(0, 0, 0, 0)),
+    color-stop(100%, rgba(127, 127, 127, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(127, 127, 127, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(127, 127, 127, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(127, 127, 127, 1) 100%
+  );
 }
 
 #hslPicker .oned .bg {
   z-index: 1;
-  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1)));
-  background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0),rgba(0,0,0,1) 100%);
-  background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%);
-  background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 100%);
+  background: -moz-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(255, 255, 255, 1)),
+    color-stop(50%, rgba(0, 0, 0, 0)),
+    color-stop(100%, rgba(0, 0, 0, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 
 #hslPicker .extras {
@@ -341,11 +531,33 @@
 }
 
 #hslPicker .oned.alpha .bg {
-  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
-  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(0,0,0,1) 100%); /* W3C */
+  background: -moz-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  ); /* FF3.6+ */
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(255, 255, 255, 1)),
+    color-stop(100%, rgba(0, 0, 0, 1))
+  ); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  ); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  ); /* Opera 11.10+ */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  ); /* W3C */
 }
 
 /* Generated on: Tue Oct 16 2018 11:58:06 GMT+0000 (UTC) */
@@ -3745,9 +3957,6 @@ w.image-licensing-wrap {
   h3 {
     font-size: 16px;
   }
-  .section.center {
-    padding-bottom: 10vh;
-  }
   .hero {
     padding-right: 0vw;
     padding-left: 0vw;
@@ -3756,7 +3965,11 @@ w.image-licensing-wrap {
     width: 100vw;
   }
   .feature-content {
-    width: auto;
+    width: 100%;
+  }
+  .saved-color,
+  .selected-color {
+    margin-right: 20px;
   }
   .feature-content.icons.numbers {
     padding-right: 15px;
@@ -3786,13 +3999,7 @@ w.image-licensing-wrap {
   .hero-image {
     width: 80%;
   }
-  .feature-wrap {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
+
   .feature-wrap.reverse {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

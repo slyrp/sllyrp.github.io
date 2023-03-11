@@ -12,9 +12,36 @@ const otherLanguages = document.querySelector('#other-languages');
 const navMenu = document.querySelector(".nav-menu-2")
 const navLinks = document.querySelectorAll(".w-nav-link");
 const navIcon = document.querySelector("w-icon-nav-menu");
+const afterScroll = document.querySelectorAll(".after-scroll");
+const littleAfterScroll = document.querySelectorAll(".little-after-scroll");
 let isDown = false;
 let startY;
 let scrollDown;
+
+button.forEach((btn) => {
+    const onMouseMove = (event) => {
+        // Add smooth transition only when entering for the first time
+        btn.style.transition = btn.style.transition === '' ? 'all 0.5s ease' : '';
+        const position = event.target.getBoundingClientRect();
+        const x = event.pageX - window.scrollX - position.left - position.width / 2;
+        const y = event.pageY - window.scrollY - position.top - position.height / 2;
+
+        btn.style.transform = "translate(" + x * 0.3 + "px, " + y * 0.5 + "px)";
+    }
+
+    btn.addEventListener("mousemove", onMouseMove);
+
+    btn.addEventListener("transitionend", () => {
+        // Remove transition after it ends to prevent additional delays
+        btn.style.transition = '';
+    });
+
+    btn.addEventListener("mouseout", function (e) {
+        // Add smooth transition when leaving
+        btn.style.transition = 'all 0.5s ease'
+        btn.style.transform = "translate(0px, 0px)";
+    });
+});
 
 if (!localStorage.getItem('selected-color')) {
     localStorage.setItem('selected-color', '#fc0a7e');
@@ -46,11 +73,7 @@ function darkenColor(hex) {
     const b = parseInt(hex.substring(5, 7), 16);
     const hexToRgbaColor = `rgba(${r}, ${g}, ${b}, 1)`;
 
-    console.log(hexToRgbaColor);
-
     const darkenedHexToRgbaColor = `rgba(${Math.floor(r * 0.5)}, ${Math.floor(g * 0.5)}, ${Math.floor(b * 0.5)}, 1)`;
-
-    console.log("darker: ", darkenedHexToRgbaColor);
 
     if (document.querySelector('.center')) {
         center.style.backgroundImage = `linear-gradient(${hexToRgbaColor}, ${darkenedHexToRgbaColor})`;
@@ -9465,11 +9488,11 @@ Webflow.require('ix2').init({
             "target": {
                 "appliesTo": "ELEMENT",
                 "styleBlockIds": [],
-                "id": "5af49de0dbb1e358142d8887|4593c4b7-56e8-060a-be57-648b0e08fc65"
+                "id": "5af49de0dbb1e358142d8887|afterScroll"
             },
             "config": {
                 "loop": false,
-                "scrollOffsetValue": 40,
+                "scrollOffsetValue": -1000,
                 "scrollOffsetUnit": "%",
                 "delay": null,
                 "direction": null,
@@ -9497,11 +9520,11 @@ Webflow.require('ix2').init({
             "target": {
                 "appliesTo": "ELEMENT",
                 "styleBlockIds": [],
-                "id": "5af49de0dbb1e358142d8887|d79d0682-95d0-be91-6539-b82f492963f4"
+                "id": "5af49de0dbb1e358142d8887|littleAfterScroll"
             },
             "config": {
                 "loop": false,
-                "scrollOffsetValue": 40,
+                "scrollOffsetValue": 10,
                 "scrollOffsetUnit": "%",
                 "delay": null,
                 "direction": null,

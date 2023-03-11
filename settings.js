@@ -1298,6 +1298,9 @@ class ColorPicker {
         this.selectedColor = null;
         this.savedColors = this.getSavedColors();
 
+        // Bind 'this' to setSelectedColor method
+        this.setSelectedColor = this.setSelectedColor.bind(this);
+
         this.colorjoe.show();
         this.setSelectedColor(localStorage.getItem("selected-color"));
 
@@ -1335,6 +1338,29 @@ class ColorPicker {
                 e.preventDefault();
                 // Your custom code here
             })
+
+            let pressTimer = null;
+
+            el.addEventListener("touchstart", function (e) {
+                // Start timer
+                pressTimer = window.setTimeout(function () {
+                    console.log("Hold action performed");
+                    this.saveColor(this.selectedColor, i);
+                    this.showSavedColor(el, this.selectedColor);;
+                }.bind(this), 500);
+            }.bind(this));
+
+            el.addEventListener("touchend", function (e) {
+                // Prevent the action when touch ended before 500ms
+                clearTimeout(pressTimer);
+
+                // If elapsed time is less than 500ms then do some action
+                const elapsedTime = e.timeStamp - e.touches[0]?.timestamp;
+                if (elapsedTime < 500) {
+                    console.log("Tap action performed");
+                    // Do something when tapped (not held)
+                }
+            });
         });
     }
 

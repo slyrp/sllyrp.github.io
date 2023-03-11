@@ -258,6 +258,10 @@ function deviceCheckCursor() {
     if (check == true) {
         document.querySelectorAll('.circle').forEach(e => e.remove());
         document.querySelector
+
+        if (document.querySelector('.change-mobile-config')) {
+            document.querySelector('.change-mobile-config').innerHTML = 'Hold to save';
+        }
     }
 }
 deviceCheckCursor();

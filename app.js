@@ -1,3 +1,5 @@
+'use strict';
+
 const h2Text = document.querySelectorAll('h2');
 const h4Text = document.querySelectorAll('h4');
 const slider = document.querySelector("body");
@@ -12,6 +14,10 @@ const navLinks = document.querySelectorAll(".w-nav-link");
 let isDown = false;
 let startY;
 let scrollDown;
+
+if (!localStorage.getItem('selected-color')) {
+    localStorage.setItem('selected-color', '#fc0a7e');
+}
 
 document.styleSheets[0].deleteRule(0);
 document.styleSheets[0].insertRule('.nav-link:hover { box-shadow: inset 0 -5px 0 0 ' + localStorage.getItem('selected-color') + ' !important; }', 0);

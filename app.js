@@ -20,25 +20,19 @@ let scrollDown;
 
 button.forEach((btn) => {
     const onMouseMove = (event) => {
-        // Add smooth transition only when entering for the first time
-        btn.style.transition = btn.style.transition === '' ? 'all 0.5s ease' : '';
+        btn.style.transition = 'all 0.1s'
         const position = event.target.getBoundingClientRect();
         const x = event.pageX - window.scrollX - position.left - position.width / 2;
         const y = event.pageY - window.scrollY - position.top - position.height / 2;
 
-        btn.style.transform = "translate(" + x * 0.3 + "px, " + y * 0.5 + "px)";
+        btn.style.transform = "translate(" + x * 0.3 + "px, " + y * 0.5 + "px) scale(1.1)";
     }
 
     btn.addEventListener("mousemove", onMouseMove);
 
-    btn.addEventListener("transitionend", () => {
-        // Remove transition after it ends to prevent additional delays
-        btn.style.transition = '';
-    });
-
     btn.addEventListener("mouseout", function (e) {
         // Add smooth transition when leaving
-        btn.style.transition = 'all 0.5s ease'
+        btn.style.transition = 'all 0.2s ease'
         btn.style.transform = "translate(0px, 0px)";
     });
 });

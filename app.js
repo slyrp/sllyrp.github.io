@@ -18,6 +18,21 @@ let isDown = false;
 let startY;
 let scrollDown;
 
+if (localStorage.getItem('selected-color') == '#ffffff') {  
+    console.log("yes")
+    navLinks.forEach((link) => {
+        link.classList.add('black-text');
+    });
+    button.forEach((btn) => {
+        btn.classList.add('black-text');
+    });
+}
+if (localStorage.getItem('selected-color') == '#000000') {
+    console.log("yes")
+    document.styleSheets[0].insertRule('::selection { background-color: #9e9e9e !important; }', 0);
+}
+    
+
 button.forEach((btn) => {
     const onMouseMove = (event) => {
         btn.style.transition = 'all 0.1s'

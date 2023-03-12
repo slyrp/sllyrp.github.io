@@ -1398,7 +1398,9 @@ const cp = new ColorPicker(document.querySelector(".container"));
 // Checks if theme is dark or light
 function checkTheme() {
     if (localStorage.getItem("theme") === "dark-mode") {
-        document.querySelector("#beta").style.backgroundColor = "#1b1b1b";
+        if (document.querySelector("#beta")) {
+            document.querySelector("#beta").style.backgroundColor = "#1b1b1b";
+        }
         document.querySelector('.container').style.backgroundColor = "#1b1b1b";
         document.querySelector('.colorpicker').style.backgroundColor = "#1b1b1b";
         document.querySelectorAll('.config-title').forEach((element) => {
@@ -1482,7 +1484,9 @@ function checkCursor() {
     } else {
         localStorage.setItem("cursor", "on");
         document.body.style.cursor = "none";
-        cursorModeButton.innerHTML = "Turn off";
+        if (cursorModeButton) {
+            cursorModeButton.innerHTML = "Turn off";
+        }
     }
 }
 checkCursor();
@@ -1510,7 +1514,9 @@ function changeCursor() {
         });
     }
 }
-cursorModeButton.addEventListener("click", changeCursor);
+if (cursorModeButton) {
+    cursorModeButton.addEventListener("click", changeCursor);
+}
 
 function checkScroll() {
     if (localStorage.getItem("scroll") === "on") {
@@ -1541,7 +1547,9 @@ function checkScroll() {
         });
     } else {
         localStorage.setItem("scroll", "off");
-        dragScrollButton.innerHTML = "Turn on";
+        if (dragScrollButton) {
+            dragScrollButton.innerHTML = "Turn on";
+        }
     }
 }
 checkScroll();
@@ -1603,4 +1611,6 @@ function changeScroll() {
         });
     }
 }
-dragScrollButton.addEventListener("click", changeScroll);
+if (dragScrollButton) {
+    dragScrollButton.addEventListener("click", changeScroll);
+}

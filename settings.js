@@ -1481,12 +1481,20 @@ function checkCursor() {
     if (localStorage.getItem("cursor") === "off") {
         cursorModeButton.innerHTML = "Turn on";
         document.body.style.cursor = "pointer";
+
+        document.querySelectorAll('.material-symbols-rounded').forEach((element) => {
+            element.style.color = 'rgba(0, 0, 0, 0)'
+        });
     } else {
         localStorage.setItem("cursor", "on");
         document.body.style.cursor = "none";
         if (cursorModeButton) {
             cursorModeButton.innerHTML = "Turn off";
         }
+
+        document.querySelectorAll('.material-symbols-rounded').forEach((element) => {
+            element.style.color = '#000'
+        });
     }
 }
 checkCursor();
@@ -1502,6 +1510,10 @@ function changeCursor() {
             // Do something with each heading
             circle.classList.add("display-none");
         });
+
+        document.querySelectorAll('.material-symbols-rounded').forEach((element) => {
+            element.style.color = 'rgba(0, 0, 0, 0)'
+        });
     } else {
         localStorage.setItem("cursor", "on");
         document.body.setAttribute("data-cursor", "on");
@@ -1511,6 +1523,10 @@ function changeCursor() {
         circles.forEach((circle) => {
             // Do something with each heading
             circle.classList.remove("display-none");
+        });
+
+        document.querySelectorAll('.material-symbols-rounded').forEach((element) => {
+            element.style.color = '#000'
         });
     }
 }

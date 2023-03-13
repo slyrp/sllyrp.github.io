@@ -14,8 +14,14 @@ const navLinks = document.querySelectorAll(".w-nav-link");
 const navIcon = document.querySelector("w-icon-nav-menu");
 const afterScroll = document.querySelectorAll(".after-scroll");
 const littleAfterScroll = document.querySelectorAll(".little-after-scroll");
-const links = document.querySelectorAll("a");
+const image = document.querySelectorAll(".hover-image");
 const navContainer = document.querySelector(".w-nav-button");
+const homeimage = document.querySelector(".homeimage");
+const footerLinks = document.querySelectorAll(".footer-link");
+const text = document.querySelectorAll("h4, h1, h3, h2, .title");
+const normalLinks = document.querySelectorAll(".normal-link");
+const link = document.querySelectorAll('.link');
+const setting = document.querySelectorAll('.setting');
 let isDown = false;
 let startY;
 let scrollDown;
@@ -269,9 +275,52 @@ function deviceCheckCursor() {
 
         const clickIcon = document.createElement('span')
         clickIcon.classList.add('material-symbols-rounded')
+        clickIcon.id = 'click-icon'
         clickIcon.innerHTML = 'link'
 
+        const happyIcon = document.createElement('span')
+        happyIcon.classList.add('material-symbols-rounded')
+        happyIcon.id = 'happy-icon'
+        happyIcon.innerHTML = 'sentiment_very_satisfied'
+
+        const imageIcon = document.createElement('span')
+        imageIcon.classList.add('material-symbols-rounded')
+        imageIcon.id = 'image-icon'
+        imageIcon.innerHTML = 'image'
+
+        const unfoldIcon = document.createElement('span')
+        unfoldIcon.classList.add('material-symbols-rounded')
+        unfoldIcon.id = 'unfold-icon'
+        unfoldIcon.innerHTML = 'unfold_more'
+
+        const settingsIcon = document.createElement('span')
+        settingsIcon.classList.add('material-symbols-rounded')
+        settingsIcon.id = 'settings-icon'
+        settingsIcon.innerHTML = 'settings'
+
+        const pageIcon = document.createElement('span')
+        pageIcon.classList.add('material-symbols-rounded')
+        pageIcon.id = 'page-icon'
+        pageIcon.innerHTML = 'quick_reference_all'
+        
+        const mainIcon = document.createElement('span')
+        mainIcon.classList.add('material-symbols-rounded')
+        mainIcon.id = 'main-icon'
+        mainIcon.innerHTML = 'contact_page'
+
+        const settingIcon = document.createElement('span')
+        settingIcon.classList.add('material-symbols-rounded')
+        settingIcon.id = 'setting-icon'
+        settingIcon.innerHTML = 'toggle_on'
+
         document.querySelector('body').appendChild(clickIcon)
+        document.querySelector('body').appendChild(happyIcon)
+        document.querySelector('body').appendChild(imageIcon)
+        document.querySelector('body').appendChild(unfoldIcon)
+        document.querySelector('body').appendChild(settingsIcon)
+        document.querySelector('body').appendChild(pageIcon)
+        document.querySelector('body').appendChild(mainIcon)
+        document.querySelector('body').appendChild(settingIcon)
     }
     if (check == true) {
         document.querySelectorAll('.circle').forEach(e => e.remove());
@@ -291,7 +340,223 @@ deviceCheckCursor();
 const coords = { x: 0, y: 0 };
 const circles = document.querySelectorAll(".circle");
 
-links.forEach((button) => {
+if (document.querySelector('.main-link')) {
+document.querySelector('.main-link').addEventListener('mouseover', function (e) {
+    coords.x = e.clientX;
+    coords.y = e.clientY;
+
+    circles.forEach((circle, index) => {
+        circle.style.transform = `scale(1.72)`;
+        circle.style.backgroundColor = 'white';
+        circle.style.opacity = '0.5';
+    });
+
+    document.querySelector('#main-icon').style.transform = 'scale(1.72)';
+    document.querySelector('#main-icon').style.opacity = '1';
+});
+
+document.querySelector('.main-link').addEventListener('mouseout', function () {
+    circles.forEach((circle, index) => {
+        circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+        circle.style.backgroundColor = localStorage.getItem('selected-color');
+        circle.style.opacity = '1';
+    });
+
+    document.querySelector('#main-icon').style.transform = 'scale(1)';
+    document.querySelector('#main-icon').style.opacity = '0';
+});
+}
+
+navContainer.addEventListener('mouseover', function (e) {
+    coords.x = e.clientX;
+    coords.y = e.clientY;
+
+    circles.forEach((circle, index) => {
+        let x = coords.x;
+        let y = coords.y;
+
+        circle.style.transform = `scale(1.72)`;
+        circle.style.backgroundColor = 'white'
+        circle.style.opacity = '0.5'
+    });
+
+    document.querySelector('#unfold-icon').style.transform = 'scale(1.72)';
+    document.querySelector('#unfold-icon').style.opacity = '1';
+});
+
+navContainer.addEventListener('mouseout', function () {
+    circles.forEach((circle, index) => {
+        circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+        circle.style.backgroundColor = localStorage.getItem('selected-color')
+        circle.style.opacity = '0.5'
+    });
+
+    document.querySelector('#unfold-icon').style.transform = 'scale(1)';
+    document.querySelector('#unfold-icon').style.opacity = '0';
+});
+
+if (document.querySelector('.settings-link')) {
+document.querySelector('.settings-link').addEventListener(('mouseover'), function () {
+    circles.forEach((circle, index) => {
+        let x = coords.x;
+        let y = coords.y;
+
+        circle.style.transform = `scale(1.72)`;
+        circle.style.backgroundColor = 'white'
+        circle.style.opacity = '0.5'
+    });
+
+    document.querySelector('#settings-icon').style.transform = 'scale(1.72)';
+    document.querySelector('#settings-icon').style.opacity = '1';
+
+    document.querySelector('.settings-link').addEventListener(('mouseout'), function () {
+        circles.forEach((circle, index) => {
+            circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+            circle.style.backgroundColor = localStorage.getItem('selected-color')
+            circle.style.opacity = '1'
+        });
+
+        document.querySelector('#settings-icon').style.transform = 'scale(1)';
+        document.querySelector('#settings-icon').style.opacity = '0';
+    });
+});
+}
+
+normalLinks.forEach((link) => {
+    link.addEventListener('mouseover', function () {
+        circles.forEach((circle, index) => {
+            let x = coords.x;
+            let y = coords.y;
+
+            circle.style.transform = `scale(${(circles.length - index) / circles.length * 2})`;
+            circle.style.backgroundColor = 'white'
+            circle.style.opacity = '0.5'
+        });
+
+        document.querySelector('#page-icon').style.transform = 'scale(1.72)';
+        document.querySelector('#page-icon').style.opacity = '1';
+    });
+
+    link.addEventListener('mouseout', function () {
+        circles.forEach((circle, index) => {
+            circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+            circle.style.backgroundColor = localStorage.getItem('selected-color')
+            circle.style.opacity = '1'
+        });
+
+        document.querySelector('#page-icon').style.transform = 'scale(1)';
+        document.querySelector('#page-icon').style.opacity = '0';
+    });
+});
+
+footerLinks.forEach((link) => {
+    link.addEventListener('mouseover', function () {
+        circles.forEach((circle, index) => {
+            let x = coords.x;
+            let y = coords.y;
+
+            circle.style.transform = `scale(${(circles.length - index) / circles.length * 2})`;
+            circle.style.backgroundColor = 'white'
+            circle.style.opacity = '0.5'
+        });
+
+        document.querySelector('#click-icon').style.transform = 'scale(1.72)';
+        document.querySelector('#click-icon').style.opacity = '1';
+        
+        link.addEventListener('mouseout', function () {
+            circles.forEach((circle, index) => {
+                circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+                circle.style.backgroundColor = localStorage.getItem('selected-color')
+                circle.style.opacity = '1'
+            });
+
+            document.querySelector('#click-icon').style.transform = 'scale(1)';
+            document.querySelector('#click-icon').style.opacity = '0';
+        });
+    });
+});
+
+document.querySelectorAll('.setting').forEach((setting) => {
+    setting.addEventListener('mouseover', function () {
+        circles.forEach((circle, index) => {
+            let x = coords.x;
+            let y = coords.y;
+
+            circle.style.transform = `scale(${(circles.length - index) / circles.length * 2})`;
+            circle.style.backgroundColor = 'white'
+            circle.style.opacity = '0.5'
+        });
+
+        document.querySelector('#setting-icon').style.transform = 'scale(1.72)';
+        document.querySelector('#setting-icon').style.opacity = '1';
+
+        setting.addEventListener('mouseout', function () {
+            circles.forEach((circle, index) => {
+                circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+                circle.style.backgroundColor = localStorage.getItem('selected-color')
+                circle.style.opacity = '1'
+            });
+        
+            document.querySelector('#setting-icon').style.transform = 'scale(1)';
+            document.querySelector('#setting-icon').style.opacity = '0';
+        });
+    });
+});
+
+homeimage.addEventListener('mousemove', function (e) {
+    circles.forEach((circle, index) => {
+        let x = coords.x;
+        let y = coords.y;
+
+        circle.style.transform = `scale(${(circles.length - index) / circles.length * 2})`;
+        circle.style.backgroundColor = 'white'
+        circle.style.opacity = '0.5'
+    });
+    
+    document.querySelector('#happy-icon').style.transform = 'scale(1.72)';
+    document.querySelector('#happy-icon').style.opacity = '1';
+
+    homeimage.addEventListener('mouseout', function () {
+        circles.forEach((circle, index) => {
+            circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+            circle.style.backgroundColor = localStorage.getItem('selected-color')
+            circle.style.opacity = '1'
+        });
+
+        document.querySelector('#happy-icon').style.transform = 'scale(1)';
+        document.querySelector('#happy-icon').style.opacity = '0';
+    });
+});
+    
+
+image.forEach((image) => {
+    image.addEventListener('mouseover', function () {
+        circles.forEach((circle, index) => {
+            let x = coords.x;
+            let y = coords.y;
+
+            circle.style.transform = `scale(${(circles.length - index) / circles.length * 2})`;
+            circle.style.backgroundColor = 'white'
+            circle.style.opacity = '0.5'
+        });
+        
+        document.querySelector('#image-icon').style.transform = 'scale(1.72)';
+        document.querySelector('#image-icon').style.opacity = '1';
+    });
+
+    image.addEventListener('mouseout', function () {
+        circles.forEach((circle, index) => {
+            circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+            circle.style.backgroundColor = localStorage.getItem('selected-color')
+            circle.style.opacity = '0.5'
+        });
+
+        document.querySelector('#image-icon').style.transform = 'scale(1)';
+        document.querySelector('#image-icon').style.opacity = '0';
+    });
+});
+
+link.forEach((button) => {
     button.addEventListener('mouseover', function () {
         circles.forEach((circle, index) => {
             let x = coords.x;
@@ -302,8 +567,8 @@ links.forEach((button) => {
             circle.style.opacity = '0.5'
         });
 
-        document.querySelector('.material-symbols-rounded').style.transform = 'scale(1.72)';
-        document.querySelector('.material-symbols-rounded').style.opacity = '1';
+        document.querySelector('#click-icon').style.transform = 'scale(1.72)';
+        document.querySelector('#click-icon').style.opacity = '1';
     });
 
     button.addEventListener('mouseout', function () {
@@ -312,8 +577,8 @@ links.forEach((button) => {
             circle.style.backgroundColor = localStorage.getItem('selected-color')
             circle.style.opacity = '1'
         });
-        document.querySelector('.material-symbols-rounded').style.transform = 'scale(1)';
-        document.querySelector('.material-symbols-rounded').style.opacity = '0';
+        document.querySelector('#click-icon').style.transform = 'scale(1)';
+        document.querySelector('#click-icon').style.opacity = '0';
     });
 });
 
@@ -327,8 +592,29 @@ window.addEventListener("mousemove", function (e) {
     coords.x = e.clientX;
     coords.y = e.clientY;
 
-    document.querySelector('.material-symbols-rounded').style.left = coords.x - 12 + 'px';
-    document.querySelector('.material-symbols-rounded').style.top = coords.y - 12 + 'px';
+    document.querySelector('#click-icon').style.left = coords.x - 12 + 'px';
+    document.querySelector('#click-icon').style.top = coords.y - 12 + 'px';
+
+    document.querySelector('#happy-icon').style.left = coords.x - 12 + 'px';
+    document.querySelector('#happy-icon').style.top = coords.y - 12 + 'px';
+
+    document.querySelector('#image-icon').style.left = coords.x - 12 + 'px';
+    document.querySelector('#image-icon').style.top = coords.y - 12 + 'px';
+
+    document.querySelector('#unfold-icon').style.left = coords.x - 12 + 'px';
+    document.querySelector('#unfold-icon').style.top = coords.y - 12 + 'px';
+
+    document.querySelector('#settings-icon').style.left = coords.x - 12 + 'px';
+    document.querySelector('#settings-icon').style.top = coords.y - 12 + 'px';
+
+    document.querySelector('#page-icon').style.left = coords.x - 12 + 'px';
+    document.querySelector('#page-icon').style.top = coords.y - 12 + 'px';
+
+    document.querySelector('#main-icon').style.left = coords.x - 12 + 'px';
+    document.querySelector('#main-icon').style.top = coords.y - 12 + 'px';
+
+    document.querySelector('#setting-icon').style.left = coords.x - 12 + 'px';
+    document.querySelector('#setting-icon').style.top = coords.y - 12 + 'px';
 });
 
 function animateCircles() {

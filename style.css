@@ -2,29 +2,6 @@
   content: "no im serious like literally nothing";
 }
 
-.button {
-  position: relative; /* Set position to relative so we can work with absolute positioning inside */
-}
-
-/* The tooltip message */
-.button::after {
-  width: 152.2px !important;
-  content: attr(t); /* Use the content value from the data-tooltip attribute */
-  position: absolute;
-  bottom: 100%; /* Position it above the button */
-  left: 49.7%;
-  transform: translateX(-50%);
-  margin-bottom: 5px;
-  padding: 8px;
-  border-radius: 3px;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
-  font-size: 14px;
-  opacity: 0; /* Make it invisible by default */
-  transition: opacity 0.7s;
-  pointer-events: auto; /* disable hover on ::after */
-}
-
 /* Show tooltip when hovered over */
 .button:hover:after {
   opacity: 1;
@@ -41,11 +18,12 @@
   left: 0;
   pointer-events: none;
   z-index: 99999999; /* so that it stays on top of all other elements */
-  opacity: 0;
+  opacity: 0 !important;
 }
 
+
 body:hover > .circle {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 .h2-do-not-change {

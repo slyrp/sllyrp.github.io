@@ -15,9 +15,11 @@ const navIcon = document.querySelector("w-icon-nav-menu");
 const afterScroll = document.querySelectorAll(".after-scroll");
 const littleAfterScroll = document.querySelectorAll(".little-after-scroll");
 const links = document.querySelectorAll("a");
+const navContainer = document.querySelector(".w-nav-button");
 let isDown = false;
 let startY;
 let scrollDown;
+
 
 if (localStorage.getItem('selected-color') == '#ffffff') {
     console.log("yes")
@@ -32,7 +34,6 @@ if (localStorage.getItem('selected-color') == '#000000') {
     console.log("yes")
     document.styleSheets[0].insertRule('::selection { background-color: #9e9e9e !important; }', 0);
 }
-
 
 button.forEach((btn) => {
     const onMouseMove = (event) => {
@@ -320,26 +321,29 @@ window.addEventListener("mousemove", function (e) {
 });
 
 function animateCircles() {
-
     let x = coords.x;
     let y = coords.y;
-
-    circles.forEach(function (circle, index) {
+  
+    // Check if the mouse is inside the window
+    if (x >= 0 && x <= window.innerWidth && y >= 0 && y <= window.innerHeight) {
+      circles.forEach(function (circle, index) {
         circle.style.left = x - 12 + "px";
         circle.style.top = y - 12 + "px";
-
+  
         circle.style.scale = (circles.length - index) / circles.length;
-
+  
         circle.x = x;
         circle.y = y;
-
+  
         const nextCircle = circles[index + 1] || circles[0];
         x += (nextCircle.x - x) * 0.3;
         y += (nextCircle.y - y) * 0.3;
-    });
-
+      });
+    }
+  
     requestAnimationFrame(animateCircles);
-}
+  }
+  
 
 animateCircles();
 

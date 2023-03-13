@@ -14,6 +14,7 @@ const navLinks = document.querySelectorAll(".w-nav-link");
 const navIcon = document.querySelector("w-icon-nav-menu");
 const afterScroll = document.querySelectorAll(".after-scroll");
 const littleAfterScroll = document.querySelectorAll(".little-after-scroll");
+const links = document.querySelectorAll("a");
 let isDown = false;
 let startY;
 let scrollDown;
@@ -286,7 +287,7 @@ deviceCheckCursor();
 const coords = { x: 0, y: 0 };
 const circles = document.querySelectorAll(".circle");
 
-button.forEach((button) => {
+links.forEach((button) => {
     button.addEventListener('mouseover', function () {
         circles.forEach((circle, index) => {
             let x = coords.x;

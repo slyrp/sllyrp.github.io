@@ -1,6 +1,6 @@
 'use strict';
 
-const h2Text = document.querySelectorAll('h2');
+const h2Text = document.querySelectorAll('h2'); 
 const h4Text = document.querySelectorAll('h4');
 const slider = document.querySelector("body");
 const center = document.querySelector('.center');

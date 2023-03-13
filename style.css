@@ -32,7 +32,7 @@ body:hover > .circle {
   margin-bottom: 20px;
   color: #fff;
   line-height: 44px;
-  font-weight: 700;
+  font-weight: 700; 
   box-sizing: border-box;
   margin-block-start: 0.83em;
   margin-block-end: 0.83em;

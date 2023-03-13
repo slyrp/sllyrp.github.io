@@ -18,7 +18,7 @@ let isDown = false;
 let startY;
 let scrollDown;
 
-if (localStorage.getItem('selected-color') == '#ffffff') {  
+if (localStorage.getItem('selected-color') == '#ffffff') {
     console.log("yes")
     navLinks.forEach((link) => {
         link.classList.add('black-text');
@@ -31,7 +31,7 @@ if (localStorage.getItem('selected-color') == '#000000') {
     console.log("yes")
     document.styleSheets[0].insertRule('::selection { background-color: #9e9e9e !important; }', 0);
 }
-    
+
 
 button.forEach((btn) => {
     const onMouseMove = (event) => {
@@ -183,6 +183,8 @@ function deviceCheckCursor() {
 
     if (check == false) {
         const circle = document.createElement('div')
+        circle.id = 'cursor'
+
         const circle1 = document.createElement('div')
         const circle2 = document.createElement('div')
         const circle3 = document.createElement('div')
@@ -263,6 +265,8 @@ function deviceCheckCursor() {
         document.body.appendChild(circleo)
         document.body.appendChild(circlep)
 
+
+
     }
     if (check == true) {
         document.querySelectorAll('.circle').forEach(e => e.remove());
@@ -281,6 +285,27 @@ deviceCheckCursor();
 // Cursor
 const coords = { x: 0, y: 0 };
 const circles = document.querySelectorAll(".circle");
+
+button.forEach((button) => {
+    button.addEventListener('mouseover', function () {
+        circles.forEach((circle, index) => {
+            let x = coords.x;
+            let y = coords.y;
+
+            circle.style.transform = `scale(${(circles.length - index) / circles.length * 2})`;
+            circle.style.backgroundColor = 'white'
+            circle.style.opacity = '0.5'
+        });
+    });
+
+    button.addEventListener('mouseout', function () {
+        circles.forEach((circle, index) => {
+            circle.style.transform = `scale(${(circles.length - index) / circles.length})`;
+            circle.style.backgroundColor = localStorage.getItem('selected-color')
+            circle.style.opacity = '1'
+        });
+    });
+});
 
 circles.forEach((circle) => { // use arrow function here
     circle.x = 0;

@@ -16,9 +16,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  pointer-events: none;
-  z-index: 99999999; /* so that it stays on top of all other elements */
+  z-index: 99999999;
   opacity: 0 !important;
+  pointer-events: none;
 }
 
 
@@ -39,6 +39,19 @@ body:hover > .circle {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
+
+.material-symbols-rounded {
+  transition: opacity 400ms ease, transform 300ms ease;
+  color: #000;
+  position: fixed;
+  height: 24px;
+  width: 24px;
+  z-index: 99999999;
+  pointer-events: none;
+  opacity: 0;
+  cursor: inherit !important;
+}
+
 
 ::-webkit-scrollbar {
   width: 2px;

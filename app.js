@@ -267,8 +267,11 @@ function deviceCheckCursor() {
         document.body.appendChild(circleo)
         document.body.appendChild(circlep)
 
+        const clickIcon = document.createElement('span')
+        clickIcon.classList.add('material-symbols-rounded')
+        clickIcon.innerHTML = 'link'
 
-
+        document.querySelector('body').appendChild(clickIcon)
     }
     if (check == true) {
         document.querySelectorAll('.circle').forEach(e => e.remove());
@@ -298,6 +301,9 @@ links.forEach((button) => {
             circle.style.backgroundColor = 'white'
             circle.style.opacity = '0.5'
         });
+
+        document.querySelector('.material-symbols-rounded').style.transform = 'scale(1.72)';
+        document.querySelector('.material-symbols-rounded').style.opacity = '1';
     });
 
     button.addEventListener('mouseout', function () {
@@ -306,6 +312,8 @@ links.forEach((button) => {
             circle.style.backgroundColor = localStorage.getItem('selected-color')
             circle.style.opacity = '1'
         });
+        document.querySelector('.material-symbols-rounded').style.transform = 'scale(1)';
+        document.querySelector('.material-symbols-rounded').style.opacity = '0';
     });
 });
 
@@ -318,6 +326,9 @@ circles.forEach((circle) => { // use arrow function here
 window.addEventListener("mousemove", function (e) {
     coords.x = e.clientX;
     coords.y = e.clientY;
+
+    document.querySelector('.material-symbols-rounded').style.left = coords.x - 12 + 'px';
+    document.querySelector('.material-symbols-rounded').style.top = coords.y - 12 + 'px';
 });
 
 function animateCircles() {
